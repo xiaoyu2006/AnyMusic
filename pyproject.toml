@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "anymusic"
-version = "0.0.1"
+version = "0.0.2"
 description = "Music from the very basic."
 authors = ["Yi Cao <me@ycao.top>"]
 readme = "README.md"
+repository = "https://github.com/xiaoyu2006/AnyMusic"
 
 [tool.poetry.dependencies]
 python = "^3.11"

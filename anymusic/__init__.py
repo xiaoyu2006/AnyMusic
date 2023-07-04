@@ -9,4 +9,4 @@ from .timbre import sine_timbre, square_timbre, triangle_timbre, piano, default_
 from .type import Audio, ScaleSystem, Frequency, Octave, Semitone, Time
 from .wave import write_file, read_file
 
-__version__ = "0.0.0"
+__version__ = "0.0.2"
