@@ -6,7 +6,7 @@ import math
 import functools
 from typing import Callable, TypeVar
 
-from .type import Sec2Amp
+from .type import Audio, Frequency, Time
 
 
 R = TypeVar("R")
@@ -14,35 +14,35 @@ S = TypeVar("S")
 T = TypeVar("T")
 
 
-def sine(hz: float) -> Sec2Amp:
+def sine(hz: Frequency) -> Audio:
     """
     Returns a sine wave of the given frequency.
     """
     return lambda t: math.sin(t * hz * math.pi * 2)
 
 
-def square(hz: float) -> Sec2Amp:
+def square(hz: Frequency) -> Audio:
     """
     Returns a square wave of the given frequency.
     """
     return lambda t: 1 if math.sin(t * hz * math.pi * 2) > 0 else -1
 
 
-def triangle(hz: float) -> Sec2Amp:
+def triangle(hz: Frequency) -> Audio:
     """
     Returns a triangle wave of the given frequency.
     """
     return lambda t: 1 - abs((t * hz * 2) % 2 - 1) * 2
 
 
-def stack(*fs: Sec2Amp) -> Sec2Amp:
+def stack(*fs: Audio) -> Audio:
     """
     Returns sum of the given functions.
     """
     return lambda t: functools.reduce(lambda x, y: x + y, [f(t) for f in fs])
 
 
-def scale(f: Sec2Amp, factor: float) -> Sec2Amp:
+def scale(f: Audio, factor: float) -> Audio:
     """
     Returns a scaled version of the given function.
     """
@@ -55,8 +55,16 @@ def composition(f: Callable[[S], T], g: Callable[[R], S]) -> Callable[[R], T]:
     """
     return lambda t: f(g(t))
 
-def from_to(f: Sec2Amp, start: float, end: float) -> Sec2Amp:
+
+def from_to(f: Audio, start: Time, end: Time) -> Audio:
     """
     Returns a function that is 0 before start and after end.
     """
     return lambda t: f(t) if start <= t <= end else 0
+
+
+def shift(f: Audio, offset: Time) -> Audio:
+    """
+    Returns a function that is shifted by the given offset.
+    """
+    return lambda t: f(t - offset)

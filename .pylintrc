@@ -1,2 +1,5 @@
 [BASIC]
-good-names=R,S,T,t,f,g,hz
+good-names=R,S,T,t,f,g,hz,i,j,k
+
+[FORMAT]
+max-line-length=120

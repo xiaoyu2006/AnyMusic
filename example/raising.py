@@ -4,7 +4,7 @@ from anymusic import sine, composition, write_file
 
 
 def raising(t: float) -> float:
-    return t ** 2
+    return t**2
 
 
 base = sine(40)

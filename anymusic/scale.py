@@ -1,19 +1,15 @@
 """
-Make human-recognizable scales.
+Make human-recognizable regular sounds.
 """
 
-from .type import ScaleSystem
+from .type import ScaleSystem, Frequency
 
 
-def really_generic_scale_system(
-    base_freq: float, base: float, eqtm: float
-) -> ScaleSystem:
+def really_generic_scale_system(base_freq: Frequency, base: float, eqtm: float) -> ScaleSystem:
     """
-    Traditional music scale systems use C * 2^( a + b * 1/12 ) as the frequency where it is the
-    a * 12 + b semitones above the base frequency.
-
-    However it can be further generalized to C * BASE^( a + b * EQTM ) where EQTM is the equal
-    temperament.
+    Traditional music scale systems use C * 2^( a + b * 1/12 ) as the frequency where it is the a * 12 + b semitones
+    above the base frequency.
+    However it can be further generalized to C * BASE^( a + b * EQTM ) where EQTM is the equal temperament.
 
     For example, for a 24-EDO scale, BASE is 2 and EQTM is 1/24.
     """
