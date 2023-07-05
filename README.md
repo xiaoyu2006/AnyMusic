@@ -5,4 +5,4 @@
 
 *Music from the very basic.*
 
-AnyMusic aims to provide a set of tools to make programmatic sounds that are more generalized. See [examples](https://github.com/xiaoyu2006/AnyMusic/tree/main/example) for more details.
+AnyMusic aims to provide a set of tools to make programmatic sounds that are more generalized. See [examples](https://github.com/xiaoyu2006/AnyMusic/tree/main/example/) and [documentation](https://anymusic.ycao.top/) for more details.
