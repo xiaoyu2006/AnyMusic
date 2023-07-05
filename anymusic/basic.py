@@ -6,7 +6,7 @@ import math
 import functools
 from typing import Callable, TypeVar, Iterable
 
-from .type import Audio, Frequency, Time
+from .type import Audio, Envelope, Frequency, Time
 
 
 def sine(freq: Frequency) -> Audio:
@@ -44,7 +44,7 @@ def stack(fs: Iterable[Audio]) -> Audio:
     return lambda t: functools.reduce(lambda x, y: x + y, [f(t) for f in fs])
 
 
-def envelope(f: Audio, multiplier: Callable[[Time], float]) -> Audio:
+def envelope(f: Audio, multiplier: Envelope) -> Audio:
     """
     Returns a function that is the given function multiplied by the given envelope.
     """

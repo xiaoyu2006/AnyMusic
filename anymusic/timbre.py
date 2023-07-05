@@ -54,15 +54,5 @@ def default_piano() -> Timbre:
     """
     Returns a timbre that sounds like a electric piano.
     """
-    return piano([1, 0.5, 0.25, 0.125, 0.0625, 0.03125, 0.15625, 0.078125])
-
-
-def fading(timbre: Timbre, fade_out: float = 0.5) -> Timbre:
-    """
-    Returns a timbre that fades out the given timbre.
-    """
-
-    def _fading(freq: Frequency) -> Audio:
-        return lambda t: timbre(freq)(t) * (1 - t / fade_out)
-
-    return _fading
+    multipliers = [1 / i for i in range(1, 8)]
+    return piano(multipliers)

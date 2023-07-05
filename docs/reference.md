@@ -18,6 +18,12 @@
     options:
         heading_level: 3
 
+## Utils
+
+::: anymusic.util
+    options:
+        heading_level: 3
+
 ## Wave
 
 ::: anymusic.wave

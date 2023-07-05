@@ -1,5 +1,6 @@
 [BASIC]
 good-names=R,S,T,t,f,g,hz,i,j,k,fs
+disable=W0511
 
 [FORMAT]
 max-line-length=120
