@@ -1,5 +1,5 @@
 """
-Contains basic functions for generating sound waves.
+Contains basic functions for generating and manipulating sound waves.
 """
 
 import math

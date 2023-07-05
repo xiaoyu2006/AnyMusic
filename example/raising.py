@@ -10,4 +10,4 @@ def raising(t: float) -> float:
 
 base = sine(40)
 raising_audio = composition(base, raising)
-write_file("raising.wav", raising_audio, 12)
+write_file("raising.wav", raising_audio, 20)

@@ -6,10 +6,10 @@ from anymusic.basic import stack, strip
 from anymusic.timbre import default_piano
 from anymusic.tuning import twelve_edo
 from anymusic.type import Audio, Octave, Semitone, Time
-from anymusic.wave import write_file
+from anymusic.wave import write_and_normalize_file
 
 piano = default_piano()
-scale = twelve_edo()
+get_tune = twelve_edo()
 
 Note = Tuple[Octave, Semitone, Time, Time]
 
@@ -27,11 +27,11 @@ notes: List[Note] = [
 
 def note_to_audio(note: Note) -> Audio:
     oct, sem, start, end = note  # pylint: disable=W0622
-    freq = scale(oct, sem)
+    freq = get_tune(oct, sem)
     audio = piano(freq)
     return strip(audio, start, end)
 
 
 audios = [note_to_audio(note) for note in notes]
-final_audio = stack(*audios)
-write_file("piano.wav", final_audio, 7)
+final_audio = stack(audios)
+write_and_normalize_file("piano.wav", final_audio, 7)

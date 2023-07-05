@@ -5,13 +5,14 @@ Common types.
 from typing import Callable
 
 Time = float  # In seconds
+Amp = float  # In [-1, 1]
 Frequency = float  # In Hz
 Octave = int  # In octaves (but not necessarily the traditional 12-EDO)
 Semitone = int  # In semitones, [0, x-EDO]
 
 # Time |-> Amplitude
 # Where Time is in seconds and Amplitude is in [-1, 1]
-Audio = Callable[[Time], Frequency]
+Audio = Callable[[Time], Amp]
 
 # Octaves, Semitones |-> Frequency
 # Where Octaves is the number of octaves above the base frequency and Semitones is the number of semitones above the

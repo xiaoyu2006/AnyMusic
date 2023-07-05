@@ -1,5 +1,5 @@
 """
-Different timbres
+Different timbres.
 """
 
 from typing import Iterable
@@ -45,7 +45,7 @@ def piano(overtunes_multiplier: Iterable[float]) -> Timbre:
 
 def default_piano() -> Timbre:
     """
-    Returns a timbre that sounds like a piano.
+    Returns a timbre that sounds like a electric piano.
     """
     return piano([1, 0.5, 0.25, 0.125, 0.0625, 0.03125, 0.15625, 0.078125])
 
