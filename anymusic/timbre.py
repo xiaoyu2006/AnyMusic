@@ -3,7 +3,7 @@ Different timbres.
 """
 
 from typing import Iterable
-from .basic import sine, square, triangle, stack, scale
+from .basic import sine, square, triangle, sawtooth, stack, scale
 from .type import Frequency, Audio, Timbre
 
 
@@ -26,6 +26,13 @@ def triangle_timbre() -> Timbre:
     Returns a timbre that uses triangle waves.
     """
     return triangle
+
+
+def sawtooth_timbre() -> Timbre:
+    """
+    Returns a timbre that uses sawtooth waves.
+    """
+    return sawtooth
 
 
 def piano(overtunes_multiplier: Iterable[float]) -> Timbre:

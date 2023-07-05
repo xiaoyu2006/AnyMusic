@@ -12,7 +12,7 @@ lint: dev-install
 	poetry run pylint --verbose anymusic
 
 format: dev-install
-	poetry run black anymusic example
+	poetry run black --verbose anymusic example
 
 docs: dev-install
 	poetry run mkdocs serve

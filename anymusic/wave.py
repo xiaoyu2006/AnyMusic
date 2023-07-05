@@ -33,6 +33,9 @@ def write_file(
             file.writeframesraw(amp.to_bytes(sampwidth, "little", signed=True))
             if progress_bar_interval is not None and t % progress_bar_interval == 0:
                 print(f"Writing {t}/{total_frames} frames", end="\r")
+        if progress_bar_interval is not None:
+            print(f"Writing {total_frames}/{total_frames} frames")
+            print(f"Exported {filename}")
 
 
 # pylint: disable=R0913

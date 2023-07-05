@@ -30,6 +30,13 @@ def triangle(freq: Frequency) -> Audio:
     return lambda t: 1 - abs((t * freq * 2) % 2 - 1) * 2
 
 
+def sawtooth(freq: Frequency) -> Audio:
+    """
+    Returns a sawtooth wave of the given frequency.
+    """
+    return lambda t: (t * freq * 2) % 2 - 1
+
+
 def stack(fs: Iterable[Audio]) -> Audio:
     """
     Returns sum of the given functions.
@@ -48,11 +55,7 @@ def scale(f: Audio, factor: float) -> Audio:
     """
     Returns a scaled version of the given function.
     """
-
-    def constant(_: Time) -> float:
-        return factor
-
-    return envelope(f, constant)
+    return lambda t: f(t) * factor
 
 
 R = TypeVar("R")
