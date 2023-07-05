@@ -1,14 +1,17 @@
 # pylint: disable=C0116, C0114
 
 from typing import Tuple, List
-from anymusic import default_piano, traditional_scale_system, write_file, from_to, stack, Octave, Semitone, Time, Audio
+from anymusic.basic import stack, strip
+
+from anymusic.timbre import default_piano
+from anymusic.tuning import twelve_edo
+from anymusic.type import Audio, Octave, Semitone, Time
+from anymusic.wave import write_file
 
 piano = default_piano()
-scale = traditional_scale_system()
+scale = twelve_edo()
 
-From = Time
-To = Time
-Note = Tuple[Octave, Semitone, From, To]
+Note = Tuple[Octave, Semitone, Time, Time]
 
 # Do, Re, Mi, Fa, Sol, La, Si
 notes: List[Note] = [
@@ -23,10 +26,10 @@ notes: List[Note] = [
 
 
 def note_to_audio(note: Note) -> Audio:
-    oct, sem, from_, to = note  # pylint: disable=W0622
+    oct, sem, start, end = note  # pylint: disable=W0622
     freq = scale(oct, sem)
     audio = piano(freq)
-    return from_to(audio, from_, to)
+    return strip(audio, start, end)
 
 
 audios = [note_to_audio(note) for note in notes]

@@ -5,8 +5,8 @@ dev-install:
 	poetry install
 
 lint: dev-install
-	poetry run mypy anymusic
-	poetry run pylint anymusic
+	poetry run mypy --verbose anymusic
+	poetry run pylint --verbose anymusic
 
 format: dev-install
 	poetry run black anymusic example

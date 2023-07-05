@@ -1,6 +1,7 @@
 # pylint: disable=C0116, C0114
 
-from anymusic import sine, composition, write_file
+from anymusic.basic import composition, sine
+from anymusic.wave import write_file
 
 
 def raising(t: float) -> float:

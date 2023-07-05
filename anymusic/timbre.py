@@ -36,11 +36,9 @@ def piano(overtunes_multiplier: Iterable[float]) -> Timbre:
     Note: overtunes_multiplier[0] should be 1 in most cases in order to preserve base frequency loudness.
     """
 
-    def _piano(hz: Frequency) -> Audio:
-        overtune_waves = []
-        for i, multiplier in enumerate(overtunes_multiplier):
-            overtune_waves.append(scale(sine(hz * i), multiplier))
-        return stack(*overtune_waves)
+    def _piano(freq: Frequency) -> Audio:
+        overtune_waves = [scale(sine(freq * i), multiplier) for i, multiplier in enumerate(overtunes_multiplier)]
+        return stack(overtune_waves)
 
     return _piano
 
@@ -50,3 +48,14 @@ def default_piano() -> Timbre:
     Returns a timbre that sounds like a piano.
     """
     return piano([1, 0.5, 0.25, 0.125, 0.0625, 0.03125, 0.15625, 0.078125])
+
+
+def fading(timbre: Timbre, fade_out: float = 0.5) -> Timbre:
+    """
+    Returns a timbre that fades out the given timbre.
+    """
+
+    def _fading(freq: Frequency) -> Audio:
+        return lambda t: timbre(freq)(t) * (1 - t / fade_out)
+
+    return _fading
